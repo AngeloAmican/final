@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRC Clinic Signup</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #9c2222, #b34b4b 80%);
+      color: #111;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      min-height: 600px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+    }
+    .grc-img {
+      flex: 1;
+      background: linear-gradient(135deg, #7a1b1b 0%, #b34b4b 100%);
+      color: white;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .grc-img img {
+      width: 450px;
+      height: auto;
+      object-fit: contain;
+    }
+    .grc-img h1 {
+      font-size: 20px;
+      margin: 0;
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: 1px;
+      max-width: 90%;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .form-container {
+      flex: 1;
+      padding: 30px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #7a1b1b;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+    input:focus,
+    select:focus {
+      border-color: #7a1b1b;
+      box-shadow: 0 0 6px rgba(122,27,27,0.3);
+    }
+    .birthday-selects {
+      display: flex;
+      gap: 10px;
+    }
+    .birthday-selects select {
+      flex: 1;
+    }
+    .password {
+      position: relative;
+    }
+    .password input {
+      width: 87%;
+      padding-right: 50px;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 20px;
+      color: #7a1b1b;
+      transition: transform 0.2s;
+    }
+    .toggle-password:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+    .validation-message {
+      font-size: 13px;
+      color: #d93025;
+      margin-bottom: 5px;
+    }
+    button {
+      background: linear-gradient(135deg, #7a1b1b, #b34b4b);
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(122,27,27,0.3);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .switch-link {
+      font-size: 14px;
+      margin-top: 15px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .switch-link a {
+      color: #7a1b1b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .switch-link a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        max-width: 95%;
+      }
+      .grc-img,
+      .form-container {
+        flex: none;
+        width: 100%;
+        padding: 25px;
+      }
+      .grc-img img {
+        width: 150px;
+      }
+    }
+  </style>
+<div class="container">
+  <div class="grc-img">
+    <img src="grc.png" alt="GRC Logo">
+    <h1>CLINIC RECEPTION SYSTEM WITH PATIENT RELATIONSHIP MANAGEMENT</h1>
+  </div>
+  <div class="form-container">
+    <form id="signup-form" method="POST" action="signup.php">
+      <h2>Create a new account</h2>
+      <div style="display:flex; gap: 15px;">
+        <div style="flex: 1;">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first_name" placeholder="First name" required>
+        </div>
+        <div class="ln" style="flex: 1;">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last_name" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <label>Birthday</label>
+      <div class="birthday-selects">
+        <select id="birth-month" name="birth_month" required>
+          <option value="" disabled selected>Month</option>
+          <option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option>
+          <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+          <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+        </select>
+        <select id="birth-day" name="birth_day" required>
+          <option value="" disabled selected>Day</option>
+        </select>
+        <select id="birth-year" name="birth_year" required>
+          <option value="" disabled selected>Year</option>
+        </select>
+      </div>
+
+      <label for="position">Position</label>
+      <select id="position" name="position" required>
+        <option value="" disabled selected>Select position</option>
+        <option>Doctor</option>
+        <option>Staff</option>
+      </select>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select gender</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+
+      <label for="signup-email">Email Address</label>
+      <input type="email" id="signup-email" name="email" placeholder="grcclinic@gmail.com" required>
+
+      <label for="signup-password">Password</label>
+      <div class="password">
+        <input type="password" id="signup-password" name="password" placeholder="********" maxlength="20" required>
+        <span class="toggle-password" data-target="signup-password">
+          <ion-icon name="eye-off-outline"></ion-icon>
+        </span>
+      </div>
+      <div id="password-validation" class="validation-message"></div>
+
+      <label for="confirm-password">Confirm Password</label>
+      <div class="password">
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="********" maxlength="20" required>
+        <span class="toggle-password" data-target="confirm-password">
+          <ion-icon name="eye-off-outline"></ion-icon>
+        </span>
+      </div>
+      <div id="confirm-validation" class="validation-message"></div>
+
+      <button type="submit" disabled>Sign Up</button>
+      <div class="switch-link">
+        Already have an account? <a href="login.html">Log In</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const signupForm = document.getElementById('signup-form');
+const signupPassword = document.getElementById('signup-password');
+const confirmPassword = document.getElementById('confirm-password');
+const passwordValidation = document.getElementById('password-validation');
+const confirmValidation = document.getElementById('confirm-validation');
+
+// Toggle password visibility
+document.querySelectorAll('.toggle-password').forEach(el => {
+  el.addEventListener('click', () => {
+    const input = document.getElementById(el.dataset.target);
+    const icon = el.querySelector('ion-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.setAttribute('name', 'eye-outline');
+    } else {
+      input.type = 'password';
+      icon.setAttribute('name', 'eye-off-outline');
+    }
+  });
+});
+
+function validatePasswordComplexity(password) {
+  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password);
+}
+
+function validateForm() {
+  const password = signupPassword.value;
+  const confirm = confirmPassword.value;
+
+  passwordValidation.textContent = password && !validatePasswordComplexity(password)
+    ? 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.'
+    : '';
+
+  confirmValidation.textContent = confirm && password !== confirm
+    ? 'Passwords do not match.'
+    : '';
+
+  signupForm.querySelector('button').disabled =
+    !validatePasswordComplexity(password) || password !== confirm;
+}
+
+signupPassword.addEventListener('input', validateForm);
+confirmPassword.addEventListener('input', validateForm);
+
+
+const birthDaySelect = document.getElementById('birth-day');
+const birthYearSelect = document.getElementById('birth-year');
+
+function populateSelect(select, start, end) {
+  for (let i = start; i <= end; i++) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = i;
+    select.appendChild(option);
+  }
+}
+
+populateSelect(birthDaySelect, 1, 31);
+const currentYear = new Date().getFullYear();
+populateSelect(birthYearSelect, currentYear - 120, currentYear);
+
+validateForm();
+</script>
+</body>
+</html>

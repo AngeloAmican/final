@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRC Clinic Login</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <style>
+    /* Global Styling for Login */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #9c2222, #b34b4b 80%);
+  color: #111;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container Layout */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 600px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+/* Left Section */
+.grc-img {
+  flex: 1;
+  background: linear-gradient(135deg, #7a1b1b 0%, #b34b4b 100%);
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.grc-img img {
+  width: 450px;
+  height: auto;
+  object-fit: contain;
+}
+
+.grc-img h1 {
+  font-size: clamp(20px, 3vw, 32px);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: 1px;
+  max-width: 90%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+}
+
+/* Right (Form) Section */
+.form-container {
+  flex: 1;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #7a1b1b;
+  text-align: center;
+}
+
+/* Form Elements */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #7a1b1b;
+    box-shadow: 0 0 6px rgba(122, 27, 27, 0.3);
+  }
+
+/* Password Field */
+.password {
+  position: relative;
+}
+
+.password input {
+  width: 85%;
+  padding-right: 50px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #7a1b1b;
+  transition: transform 0.2s;
+}
+
+.toggle-password:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Remember/Forgot */
+.remember-forgot {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remember-forgot a {
+  color: #7a1b1b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+button {
+  background: linear-gradient(135deg, #7a1b1b, #b34b4b);
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(122, 27, 27, 0.3);
+}
+
+/* Switch Link */
+.switch-link {
+  font-size: 14px;
+  margin-top: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.switch-link a {
+  color: #7a1b1b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+/* Login Message */
+#login-message {
+  padding: 10px;
+  font-size: 14px;
+
+}
+
+#login-message.success {
+  color: rgb(0, 137, 0);
+}
+
+#login-message.error {
+  color: #be0808;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 95%;
+  }
+
+  .grc-img,
+  .form-container {
+    flex: none;
+    width: 100%;
+    padding: 25px;
+  }
+
+  .grc-img img {
+    width: 150px;
+  }
+}
+  </style>
+<div class="container">
+  <div class="grc-img">
+    <img src="grc.png" alt="GRC Logo">
+    <h1>CLINIC RECEPTION SYSTEM WITH PATIENT RELATIONSHIP MANAGEMENT</h1>
+  </div>
+
+  <div class="form-container">
+        <form id="login-form" method="POST" action="login.php">
+      <h2>Log In</h2>
+
+      <label for="login-email">Email Address</label>
+      <input type="email" id="login-email" name="email" placeholder="grcclinic@gmail.com" required>
+
+      <label for="login-password">Password</label>
+      <div class="password">
+        <input type="password" id="login-password" name="password" placeholder="******" required maxlength="20">
+        <span class="toggle-password" data-target="login-password">
+          <ion-icon name="eye-off-outline"></ion-icon>
+        </span>
+      </div>
+
+      <div id="login-message"></div>
+
+      <div class="remember-forgot">
+        <label><input type="checkbox" name="remember-me" id="remember-me"> Remember Me</label>
+        <a href="forgot-pass.html">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Log In</button>
+
+      <div class="switch-link">
+        Don’t have an account? <a href="signup.html">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.toggle-password').forEach(element => {
+    element.addEventListener('click', () => {
+      const targetId = element.getAttribute('data-target');
+      const input = document.getElementById(targetId);
+      const eyeIcon = element.querySelector('ion-icon');
+      if (!input) return;
+      const newType = input.type === 'password' ? 'text' : 'password';
+      input.type = newType;
+      if (eyeIcon) eyeIcon.setAttribute('name', newType === 'password' ? 'eye-off-outline' : 'eye-outline');
+    });
+  });
+
+  const messageBox = document.getElementById('login-message');
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get('error');
+
+  if (error) {
+    messageBox.textContent = error;
+    messageBox.classList.add('error');
+  }
+
+</script>
+
+</body>
+</html>

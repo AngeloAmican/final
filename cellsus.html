@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GRC Clinic - Cellsus</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 10px;
+      width: 360px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      position: relative;
+      font-family: 'Inter', sans-serif;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .med-group {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .med-group input {
+      margin-top: 5px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #saveMedicine {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+    }
+    .add-btn {
+  height: 36px;
+  font-size: 14px;
+}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="avatar">
+          <div class="avatar-img"><i class="fa-regular fa-user"></i></div>
+        </div>
+        <div class="user-name">angelo amican</div>
+      </div>
+
+      <nav class="nav">
+        <ul>
+          <li class="nav-item ">
+            <a href="index.html"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+          </li>
+          <li class="nav-item active">
+            <a href="cellsus.html"><i class="fa-regular fa-id-card"></i> <span>Cellsus</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="schedulelist.html"><i class="fa-regular fa-calendar"></i> <span>Schedule List</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="monthlysick.html"><i class="fa-regular fa-chart-bar"></i> <span>Statistic Chart</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="evaluation.html"><i class="fa-regular fa-star"></i> <span>Evaluation</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="Inventory.html"><i class="fa-solid fa-boxes-stacked"></i> <span>Inventory</span></a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout-wrap">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+  
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+         <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1>CELLSUS</h1>
+      </header>
+
+      <section class="content">
+        <div class="panel">
+          <h2 class="section-title">PATIENT</h2>
+
+          <div class="filter-bar">
+            <input type="text" placeholder="Name" id="nameInput">
+            <input type="text" placeholder="Course/Section" id="courseInput">
+            <input type="text" placeholder="ID No#" id="idInput">
+            <input type="text" placeholder="Complaint" id="complaintInput">
+            <input type="text" placeholder="Medicine Given" id="medicineInput">
+            <button class="add-btn" id="addPatientBtn">Add Patient</button>
+          </div>
+
+          <div class="table-container">
+            <table class="patient-table">
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th>Name</th>
+                  <th>Course/Section</th>
+                  <th>ID No#</th>
+                  <th>Complaint</th>
+                  <th>Medicine Given</th>
+                </tr>
+              </thead>
+              <tbody id="patientTableBody">
+                
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           <!-- Medicine Modal -->
+  <div id="medicineModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Add Medicine</h2>
+
+      <div class="med-group">
+        <label>Medicine 1:</label>
+        <input type="text" id="med1Name" placeholder="Enter medicine name">
+        <input type="number" id="med1Qty" placeholder="Quantity" min="1">
+      </div>
+
+      <div class="med-group">
+        <label>Medicine 2 (optional):</label>
+        <input type="text" id="med2Name" placeholder="Enter medicine name">
+        <input type="number" id="med2Qty" placeholder="Quantity" min="1">
+      </div>
+
+      <button id="saveMedicine" class="add-btn">Save</button>
+    </div>
+  </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="cellsus.js">
+  </script>
+  <script src="notifier.js"></script>
+</body>
+</html>

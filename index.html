@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clinic Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="avatar">
+          <!-- simple circle placeholder -->
+          <div class="avatar-img"><i class="fa-regular fa-user"></i></div>
+        </div>
+        <div class="user-name"></div>
+      </div>
+
+      <nav class="nav">
+        <ul>
+          <li class="nav-item active">
+            <a href="index.html"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="cellsus.html"><i class="fa-regular fa-id-card"></i> <span>Cellsus</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="schedulelist.html"><i class="fa-regular fa-calendar"></i> <span>Schedule List</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="monthlysick.html"><i class="fa-regular fa-chart-bar"></i> <span>Statistic Chart</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="evaluation.html"><i class="fa-regular fa-star"></i> <span>Evaluation</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="Inventory.html"><i class="fa-solid fa-boxes-stacked"></i> <span>Inventory</span></a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout-wrap">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <header class="topbar">
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1>DASHBOARD</h1>
+      </header>
+
+      <section class="content">
+        <div class="panel">
+          <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="card">
+              <div class="card-icon"><i class="fa-solid fa-user"></i></div>
+              <div class="card-number" id="todayPatient">0</div>
+              <div class="card-label">Today Patient</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+              <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+              <div class="card-number" id="totalPatient">0</div>
+              <div class="card-label">Total Patient</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+              <div class="card-icon"><i class="fa-regular fa-calendar-days"></i></div>
+              <div class="card-number" id="todayAppointment">0</div>
+              <div class="card-label">Today Appointment</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card clickable" id="totalAppointmentCard">
+              <div class="card-icon"><i class="fa-regular fa-calendar"></i></div>
+              <div class="card-number" id="totalAppointment">0</div>
+              <div class="card-label">Total Appointment</div>
+            </div>
+
+          </div>
+        </div>
+       <!-- Archived Appointments Modal -->
+<div id="archiveModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="closeBtn">&times;</span>
+    <h2>📦 Archived Appointments</h2>
+
+    <input 
+      type="text" 
+      id="archiveSearch" 
+      placeholder="🔍 Search by name..." 
+      style="width:100%;padding:8px 10px;margin-bottom:10px;border:1px solid #ccc;border-radius:6px;"
+    />
+
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="background:#f0f0f0;">
+          <th style="padding:8px;border:1px solid #ccc;">Name</th>
+          <th style="padding:8px;border:1px solid #ccc;">ID No.</th>
+          <th style="padding:8px;border:1px solid #ccc;">Date</th>
+          <th style="padding:8px;border:1px solid #ccc;">Time</th>
+          <th style="padding:8px;border:1px solid #ccc;">Notes</th>
+          <th style="padding:8px;border:1px solid #ccc;">Action</th>
+        </tr>
+      </thead>
+      <tbody id="archivedTableBody">
+      </tbody>
+    </table>
+  </div>
+</div>
+      </section>
+      
+    </main>
+  </div>
+  <script src="index.js"></script>
+  <script src="notifier.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

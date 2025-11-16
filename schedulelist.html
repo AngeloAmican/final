@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GRC Clinic - Schedule List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="avatar">
+          <div class="avatar-img"><i class="fa-regular fa-user"></i></div>
+        </div>
+        <div class="user-name">angelo amican</div>
+      </div>
+      
+
+      <nav class="nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="cellsus.html"><i class="fa-regular fa-id-card"></i> <span>Cellsus</span></a>
+          </li>
+          <li class="nav-item active">
+            <a href="schedulelist.html"><i class="fa-regular fa-calendar"></i> <span>Schedule List</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="monthlysick.html"><i class="fa-regular fa-chart-bar"></i> <span>Statistic Chart</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="evaluation.html"><i class="fa-regular fa-star"></i> <span>Evaluation</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="Inventory.html"><i class="fa-solid fa-boxes-stacked"></i> <span>Inventory</span></a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout-wrap">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+         <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1>SCHEDULE LIST</h1>
+      </header>
+
+      <section class="content">
+        <div class="panel">
+          <h2 class="section-title">SCHEDULE LIST</h2>
+
+          <div class="filter-bar">
+            <input type="text" id="schedName" placeholder="Name">
+            <input type="text" id="schedId" placeholder="ID No.">
+            <input type="date" id="schedDate">
+            <input type="time" id="schedTime">
+            <input type="text" id="schedNotes" placeholder="Notes">
+            <button id="addScheduleBtn" class="add-btn">Add Schedule</button>
+          </div>
+
+          <div class="table-container">
+            <table class="patient-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>ID No.</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Notes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+<div id="editModal" class="modal" style="display:none;">
+  <div class="modal-content" style="
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    max-width:400px;
+    width:90%;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    margin:100px auto;
+    position:relative;
+  ">
+    <span id="closeEditModal" style="
+      position:absolute;
+      top:10px;
+      right:15px;
+      cursor:pointer;
+      font-size:20px;
+      color:#555;
+    ">&times;</span>
+    <h2 style="margin-bottom:15px;">Edit Schedule</h2>
+
+    <label>Name</label>
+    <input type="text" id="editName" style="width:100%;padding:8px;margin-bottom:10px;">
+
+    <label>ID No.</label>
+    <input type="text" id="editId" style="width:100%;padding:8px;margin-bottom:10px;">
+
+    <label>Date</label>
+    <input type="date" id="editDate" style="width:100%;padding:8px;margin-bottom:10px;">
+
+    <label>Time</label>
+    <input type="time" id="editTime" style="width:100%;padding:8px;margin-bottom:10px;">
+
+    <label>Notes</label>
+    <input type="text" id="editNotes" style="width:100%;padding:8px;margin-bottom:15px;">
+
+    <button id="saveEditBtn" style="
+      background:#007bff;
+      color:white;
+      padding:8px 16px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    ">Save Changes</button>
+  </div>
+</div>
+
+  </div>
+  <script src="notifier.js"></script>
+  <script src="schedulelist.js"></script>
+</body>
+</html>
